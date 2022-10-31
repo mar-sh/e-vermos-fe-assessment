@@ -1,7 +1,7 @@
 <template>
   <nav>
     <!-- Desktop -->
-    <div class="desktop-nav">
+    <div class="desktop-nav" :class="{ 'mobile-active': expandMobileMenu }">
       <div class="navbar">
         <div class="menu-container">
           <!-- Main Menu -->
@@ -21,7 +21,10 @@
 
           <!-- Button show mobile -->
           <div class="toggle-container">
-            <button class="toggle" style="background: #fff; border: none">
+            <button
+              class="toggle"
+              @click="expandMobileMenu = !expandMobileMenu"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -43,7 +46,7 @@
     </div>
 
     <!-- Mobile -->
-    <div class="mobile-nav">
+    <div class="mobile-nav" :class="{ hidden: !expandMobileMenu }">
       <ul class="nav-menu">
         <li class="nav-item">
           <nuxt-link to="/categories"> Browse Catalog </nuxt-link>
@@ -56,6 +59,12 @@
 <script>
 export default {
   name: 'HeaderDefault',
+
+  data() {
+    return {
+      expandMobileMenu: false,
+    }
+  },
 }
 </script>
 
@@ -64,6 +73,10 @@ nav {
   .desktop-nav {
     background-color: #fff;
     border-bottom: 1px solid #d4d8dd;
+
+    &.mobile-active {
+      border-bottom: none;
+    }
 
     .navbar {
       max-width: 80rem;
@@ -101,6 +114,11 @@ nav {
         .toggle-container {
           display: flex;
           align-items: center;
+
+          .toggle {
+            background: #fff;
+            border: none;
+          }
         }
       }
     }
@@ -110,6 +128,10 @@ nav {
     display: block;
     margin-bottom: 20px;
     border-bottom: 1px solid #d4d8dd;
+
+    &.hidden {
+      display: none;
+    }
 
     .nav-menu {
       .nav-item {
