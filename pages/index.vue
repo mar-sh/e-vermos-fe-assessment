@@ -30,6 +30,8 @@ main {
 
     h1 {
       margin-bottom: 1rem;
+      font-weight: bold;
+      color: #004751;
     }
 
     h3 {
