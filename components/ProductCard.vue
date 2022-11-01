@@ -19,7 +19,9 @@
       </p>
 
       <div class="product-price">
-        <span class="product-price-text">${{ product.price }}</span>
+        <span class="product-price-text"
+          >${{ Math.round(product.price, 0) }}</span
+        >
       </div>
     </div>
   </div>

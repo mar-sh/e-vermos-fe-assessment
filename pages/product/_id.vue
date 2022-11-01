@@ -21,21 +21,31 @@
 
         <p class="product-description">{{ product.description }}</p>
 
-        <b class="product-price">${{ product.price }}</b>
+        <b class="product-price">${{ itemPrice }}</b>
 
-        <div>Variant Selector</div>
+        <div style="width: 100%">
+          <input-tabs
+            :tabs="variants"
+            :starting-index="0"
+            @input="getSelectedVariant"
+          />
+        </div>
 
         <button class="button">Get product</button>
-
-        <p>Some notice</p>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import InputTabs from '@/components/InputTabs'
+
 export default {
   name: 'ProductPage',
+
+  components: {
+    InputTabs,
+  },
 
   data() {
     return {
@@ -49,7 +59,25 @@ export default {
         image: 'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg',
         rating: { rate: 3.9, count: 120 },
       },
+      variants: [
+        { name: 'Variant 1', value: '1', multiplier: 1 },
+        { name: 'Variant 2', value: '2', multiplier: 1.1 },
+      ],
+      selectedVariant: null,
     }
+  },
+
+  computed: {
+    itemPrice() {
+      return Math.round(this.product?.price * this.selectedVariant?.multiplier || 1, 0);
+    },
+  },
+
+  methods: {
+    getSelectedVariant(variant) {
+      console.log(variant, 'variant')
+      this.selectedVariant = variant
+    },
   },
 }
 </script>
@@ -94,12 +122,11 @@ export default {
     b,
     div,
     button {
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.5rem;
     }
 
     .product-title {
       font-size: 40px;
-      margin-bottom: 1.2rem;
     }
 
     .product-description {
@@ -110,18 +137,26 @@ export default {
     .product-price {
       font-weight: bold;
     }
+
+    .button {
+      padding: 1rem;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
   }
 }
 
 @media screen and (min-width: 1024px) {
   .product-details {
     flex-direction: row;
+    align-items: flex-start;
 
     .product-details-image {
       flex-basis: 50%;
     }
 
     .product-details-info {
+      padding: 2rem;
       flex-basis: 50%;
     }
   }
