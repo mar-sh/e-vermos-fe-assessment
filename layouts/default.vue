@@ -1,5 +1,5 @@
 <template>
-  <div class="page-wrapper">
+  <div>
     <header-default></header-default>
     <nuxt></nuxt>
   </div>
@@ -17,6 +17,4 @@ export default {
 }
 </script>
 
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>

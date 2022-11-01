@@ -1,10 +1,10 @@
 <template>
   <div class="product-card">
     <figure class="product-media">
-      <nuxt-link to="/">
+      <nuxt-link :to="`/product/${product.id}`">
         <img
-          src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
-          :alt="'image alt'"
+          :src="product.image"
+          :alt="product.title"
           width="225"
           height="225"
         />
@@ -13,11 +13,13 @@
 
     <div ref="detail" class="product-details">
       <h3 class="product-name">
-        <nuxt-link to="/">Item Name</nuxt-link>
+        <nuxt-link :to="`/product/${product.id}`">{{
+          product.title.slice(0, 15).concat('...')
+        }}</nuxt-link>
       </h3>
 
       <div class="product-price">
-        <span class="product-price-text">$99</span>
+        <span class="product-price-text">${{product.price}}</span>
       </div>
     </div>
   </div>
@@ -26,6 +28,13 @@
 <script>
 export default {
   name: 'ProductCard',
+
+  props: {
+    product: {
+      type: Object,
+      required: true,
+    },
+  },
 }
 </script>
 

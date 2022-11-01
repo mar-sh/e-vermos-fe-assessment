@@ -22,8 +22,6 @@ export const actions = {
         `${BASE_STORE_API_URL}/products/${id}`
       )
 
-      console.log(response)
-
       commit(SET_PRODUCT, response.data)
       commit(STOP_LOADING)
 

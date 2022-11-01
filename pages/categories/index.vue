@@ -3,13 +3,14 @@
     <h2>The Catalog</h2>
     <p>Browse selections</p>
     <hr />
-    <div class="row">
-      <div v-for="(item, i) in items" :key="item.id || i" class="item">
+    <div v-if="!loading" class="row" >
+      <div v-for="(product, i) in products" :key="product.id || i" class="item">
         <div class="wrapper">
-          <product-card />
+          <product-card :product="product"/>
         </div>
       </div>
     </div>
+    <div v-else>Loading</div>
   </div>
 </template>
 
@@ -37,16 +38,24 @@ export default {
     }
   },
 
+  async fetch() {
+    try {
+      await this.fetchProducts()
+    } catch (e) {
+      this.$nuxt.error({
+        statusCode: '500',
+        message: 'Something has gone wrong',
+      })
+    }
+  },
+
   computed: {
     ...mapState('products', ['products', 'loading']),
   },
+
   methods: {
     ...mapActions('products', ['fetchProducts']),
-    ...mapActions('product', ['fetchProduct']),
-  },
-
-  async mounted() {
-    await this.fetchProduct(1)
+    
   },
 }
 </script>

@@ -7,7 +7,7 @@ export const STOP_LOADING = 'STOP_LOADING'
 
 export function state() {
   return {
-    products: [{ id: 1, name: 'a' }],
+    products: [],
     loading: false,
   }
 }
