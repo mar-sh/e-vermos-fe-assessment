@@ -12,14 +12,14 @@
     </figure>
 
     <div ref="detail" class="product-details">
-      <h3 class="product-name">
+      <p class="product-name">
         <nuxt-link :to="`/product/${product.id}`">{{
-          product.title.slice(0, 15).concat('...')
+          product.title.slice(0, 12).concat('...')
         }}</nuxt-link>
-      </h3>
+      </p>
 
       <div class="product-price">
-        <span class="product-price-text">${{product.price}}</span>
+        <span class="product-price-text">${{ product.price }}</span>
       </div>
     </div>
   </div>
@@ -46,6 +46,7 @@ export default {
   height: 100%;
   background-color: #fff;
   border-radius: 16px;
+  padding: 1rem;
 
   &:hover {
     box-shadow: 0 0 12px rgb(33 33 33 / 20%);
@@ -69,11 +70,24 @@ export default {
   }
 
   .product-name {
+    line-height: 2rem;
+    font-weight: bold;
     text-align: center;
+    border-bottom: 1px solid rgba(225, 225, 225, 0.75);
+    margin-bottom: 0.5rem;
+
+    > a {
+      color: initial;
+
+      &:hover {
+        color: #004751;
+      }
+    }
   }
 
   .product-price {
     text-align: center;
+    font-weight: bold;
   }
 }
 </style>
