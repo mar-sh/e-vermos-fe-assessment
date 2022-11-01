@@ -79,7 +79,7 @@ nav {
     }
 
     .navbar {
-      max-width: 80rem;
+      max-width: 95rem;
       margin: 0 auto;
 
       .menu-container {

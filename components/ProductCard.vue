@@ -14,7 +14,7 @@
     <div ref="detail" class="product-details">
       <p class="product-name">
         <nuxt-link :to="`/product/${product.id}`">{{
-          `title`
+          product.title
         }}</nuxt-link>
       </p>
 
@@ -77,6 +77,10 @@ export default {
     margin-bottom: 0.5rem;
 
     > a {
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
       color: initial;
 
       &:hover {
