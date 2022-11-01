@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex'
 import ProductCard from '@/components/ProductCard.vue'
 
 export default {
@@ -34,6 +35,18 @@ export default {
         { id: 6, name: 'F' },
       ],
     }
+  },
+
+  computed: {
+    ...mapState('products', ['products', 'loading']),
+  },
+  methods: {
+    ...mapActions('products', ['fetchProducts']),
+    ...mapActions('product', ['fetchProduct']),
+  },
+
+  async mounted() {
+    await this.fetchProduct(1)
   },
 }
 </script>
