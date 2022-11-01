@@ -19,8 +19,8 @@
       </p>
 
       <div class="product-price">
-        <span class="product-price-text"
-          >${{ Math.round(product.price, 0) }}</span
+        <p class="product-price-text"
+          >${{ Math.round(product.price, 0) }}</p
         >
       </div>
     </div>
@@ -40,7 +40,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .product-card {
   position: relative;
   display: flex;
