@@ -3,9 +3,7 @@
     <div class="hero">
       <h1>The Best Catalog Ever</h1>
       <h3>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis
-        adipisci et excepturi necessitatibus cumque voluptatum, sunt possimus,
-        saepe numquam quod facere dignissimos.
+        High performing catalog browsers use EverCatalog to browse products.
       </h3>
 
       <nuxt-link class="button cta-button" to="/categories"

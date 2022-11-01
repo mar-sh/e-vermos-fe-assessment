@@ -27,7 +27,7 @@
             />
           </div>
 
-          <button class="button" @click="getItem">Get product</button>
+          <button class="button" @click="getItem">Get Product</button>
         </div>
       </div>
     </template>
