@@ -4,40 +4,42 @@
       <nuxt-link to="/categories">⬅ <span>Back to Catalog</span></nuxt-link>
     </div>
 
-    <div class="product-details">
-      <!-- Left -->
+    <template v-if="!loading">
+      <div class="product-details">
+        <!-- Image -->
+        <figure class="product-details-image">
+          <img :src="product.image" width="100%" height="100%" />
+        </figure>
 
-      <figure class="product-details-image">
-        <img
-          src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
-          width="100%"
-          height="100%"
-        />
-      </figure>
+        <!-- Info -->
+        <div class="product-details-info">
+          <h1 class="product-title">{{ product.title }}</h1>
 
-      <!-- Right -->
-      <div class="product-details-info">
-        <h1 class="product-title">{{ product.title }}</h1>
+          <p class="product-description">{{ product.description }}</p>
 
-        <p class="product-description">{{ product.description }}</p>
+          <b class="product-price">${{ itemPrice }}</b>
 
-        <b class="product-price">${{ itemPrice }}</b>
+          <div style="width: 100%">
+            <input-tabs
+              :tabs="variants"
+              :starting-index="0"
+              @input="getSelectedVariant"
+            />
+          </div>
 
-        <div style="width: 100%">
-          <input-tabs
-            :tabs="variants"
-            :starting-index="0"
-            @input="getSelectedVariant"
-          />
+          <button class="button" @click="getItem">Get product</button>
         </div>
-
-        <button class="button">Get product</button>
       </div>
-    </div>
+    </template>
+
+    <template v-else>
+      <div>Loading...</div>
+    </template>
   </div>
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
 import InputTabs from '@/components/InputTabs'
 
 export default {
@@ -49,34 +51,49 @@ export default {
 
   data() {
     return {
-      product: {
-        id: 1,
-        title: 'Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops',
-        price: 109.95,
-        description:
-          'Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday',
-        category: "men's clothing",
-        image: 'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg',
-        rating: { rate: 3.9, count: 120 },
-      },
       variants: [
         { name: 'Variant 1', value: '1', multiplier: 1 },
-        { name: 'Variant 2', value: '2', multiplier: 1.1 },
+        { name: 'Variant 2', value: '2', multiplier: 1.2 },
       ],
       selectedVariant: null,
     }
   },
 
+  async fetch() {
+    try {
+      const id = this.$route.params.id
+
+      await this.fetchProduct(id)
+    } catch (error) {
+      this.$nuxt.error({
+        statusCode: '500',
+        message: 'Something has gone wrong',
+      })
+    }
+  },
+
   computed: {
+    ...mapState('product', ['product', 'loading']),
+
     itemPrice() {
-      return Math.round(this.product?.price * this.selectedVariant?.multiplier || 1, 0);
+      return Math.round(
+        this.product?.price * this.selectedVariant?.multiplier || 1,
+        0
+      )
     },
   },
 
   methods: {
+    ...mapActions('product', ['fetchProduct']),
+
     getSelectedVariant(variant) {
-      console.log(variant, 'variant')
       this.selectedVariant = variant
+    },
+
+    getItem() {
+      alert(
+        `Product: ${this.product.title} \nVariant: ${this.selectedVariant?.name}\nPrice: $${this.itemPrice}`
+      )
     },
   },
 }
@@ -96,17 +113,16 @@ export default {
   .product-details-image {
     align-items: center;
     display: flex;
-    margin: 12px auto;
-    height: 500px;
-    border-radius: 12px;
+    margin: 0 12px auto;
+    height: 450px;
     margin-bottom: 3rem;
 
     > img {
       display: block;
+      border-radius: 16px;
       height: inherit;
       max-width: 100%;
-      max-height: inherit;
-      object-fit: contain;
+      object-fit: fill;
     }
   }
 
@@ -139,8 +155,8 @@ export default {
     }
 
     .button {
-      padding: 1rem;
-      text-transform: uppercase;
+      padding: 0.5rem;
+      font-size: 18px;
       font-weight: bold;
     }
   }
@@ -153,6 +169,7 @@ export default {
 
     .product-details-image {
       flex-basis: 50%;
+      height: 600px;
     }
 
     .product-details-info {
