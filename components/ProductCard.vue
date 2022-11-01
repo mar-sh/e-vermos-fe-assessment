@@ -5,7 +5,7 @@
         <img
           :src="product.image"
           :alt="product.title"
-          width="225"
+          width="100%"
           height="225"
         />
       </nuxt-link>
@@ -14,7 +14,7 @@
     <div ref="detail" class="product-details">
       <p class="product-name">
         <nuxt-link :to="`/product/${product.id}`">{{
-          product.title.slice(0, 12).concat('...')
+          `title`
         }}</nuxt-link>
       </p>
 
@@ -46,7 +46,7 @@ export default {
   height: 100%;
   background-color: #fff;
   border-radius: 16px;
-  padding: 1rem;
+  padding: 15px;
 
   &:hover {
     box-shadow: 0 0 12px rgb(33 33 33 / 20%);
@@ -57,7 +57,7 @@ export default {
     flex-grow: 1;
     align-items: center;
     margin: 8px auto;
-    padding: 0 1rem;
+    padding: 0 0.5rem;
     height: 225px;
 
     > img {

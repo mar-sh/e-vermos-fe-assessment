@@ -8,7 +8,9 @@
         saepe numquam quod facere dignissimos.
       </h3>
 
-      <button><nuxt-link to="/categories">Browse Now</nuxt-link></button>
+      <nuxt-link class="button cta-button" to="/categories"
+        >Browse Now</nuxt-link
+      >
     </div>
   </main>
 </template>
@@ -36,6 +38,10 @@ main {
 
     h3 {
       margin-bottom: 1rem;
+    }
+
+    .cta-button {
+      font-size: 1.5rem;
     }
   }
 }

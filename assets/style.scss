@@ -18,8 +18,51 @@ html {
 hr {
   margin-top: 0;
   margin-bottom: 1rem;
+  opacity: 0.75;
 }
 
 a {
   text-decoration: none;
+  color: initial;
+
+  &:hover {
+    color: #004751;
+  }
+}
+
+.page {
+  background: #f4f7f9;
+  min-height: 100vh;
+  padding-top: 0.5rem;
+  padding-left: 1rem;
+  padding-bottom: 0.5rem;
+  padding-right: 1rem;
+}
+
+.button {
+  color: #fff;
+  background-color: #004751;
+  border-color: #004751;
+  display: inline-block;
+  border-radius: 8px;
+  padding: 0.4em 1em;
+  line-height: 1.5;
+  text-align: center;
+  transition: color 0.3s, border-color 0.3s, background-color;
+  white-space: nowrap;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #006c6b;
+    color: #fff;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .page {
+    padding-top: 2rem;
+    padding-left: 5rem;
+    padding-bottom: 2rem;
+    padding-right: 5rem;
+  }
 }

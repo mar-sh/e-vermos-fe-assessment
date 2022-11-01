@@ -136,6 +136,7 @@ nav {
     .nav-menu {
       .nav-item {
         display: block;
+        font-weight: bold;
         padding-top: 0.5rem;
         padding-right: 1rem;
         padding-bottom: 0.5rem;
@@ -154,6 +155,10 @@ nav {
             .nav-menu {
               display: flex;
               align-items: center;
+
+              .nav-item {
+                font-weight: 600;
+              }
             }
           }
 

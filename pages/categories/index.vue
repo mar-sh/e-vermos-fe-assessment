@@ -1,12 +1,12 @@
 <template>
-  <div>
-    <h2>The Catalog</h2>
-    <p>Browse selections</p>
+  <div class="page">
+    <h2 class="page-title">The Catalog</h2>
+
     <hr />
-    <div v-if="!loading" class="row" >
+    <div v-if="!loading" class="row">
       <div v-for="(product, i) in products" :key="product.id || i" class="item">
         <div class="wrapper">
-          <product-card :product="product"/>
+          <product-card :product="product" />
         </div>
       </div>
     </div>
@@ -55,17 +55,19 @@ export default {
 
   methods: {
     ...mapActions('products', ['fetchProducts']),
-    
   },
 }
 </script>
 
 <style lang="scss">
+.page-title {
+  line-height: 6rem;
+}
+
 .row {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  background: #f4f7f9;
 
   .item {
     width: 100%;
