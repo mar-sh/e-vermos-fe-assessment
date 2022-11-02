@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import HeaderDefault from '@/components/HeaderDefault.vue'
+import HeaderDefault from '@/components/HeaderDefault'
 
 export default {
   name: 'DefaultLayout',

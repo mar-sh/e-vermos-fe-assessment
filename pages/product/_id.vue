@@ -33,20 +33,23 @@
     </template>
 
     <template v-else>
-      <div>Loading...</div>
+      <loading-text :is-loading="loading" />
     </template>
   </div>
 </template>
 
 <script>
 import { mapState, mapActions } from 'vuex'
+
 import InputTabs from '@/components/InputTabs'
+import LoadingText from '@/components/LoadingText';
 
 export default {
   name: 'ProductPage',
 
   components: {
     InputTabs,
+    LoadingText
   },
 
   data() {

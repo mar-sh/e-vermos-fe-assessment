@@ -26,8 +26,8 @@
 <script>
 import { mapActions, mapState } from 'vuex'
 
-import ProductCard from '@/components/ProductCard.vue'
-import LoadingText from '@/components/LoadingText.vue'
+import ProductCard from '@/components/ProductCard'
+import LoadingText from '@/components/LoadingText'
 
 export default {
   name: 'CategoryPage',
