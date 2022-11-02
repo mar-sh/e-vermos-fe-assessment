@@ -6,7 +6,7 @@
         High performing catalog browsers use EverCatalog to browse products.
       </h3>
 
-      <nuxt-link class="button cta-button" to="/categories"
+      <nuxt-link class="button cta-button" to="/catalog"
         >Browse Now</nuxt-link
       >
     </div>

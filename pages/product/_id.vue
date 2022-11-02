@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <div class="page-nav">
-      <nuxt-link to="/categories">⬅ <span>Back to Catalog</span></nuxt-link>
+      <nuxt-link to="/catalog">⬅ <span>Back to Catalog</span></nuxt-link>
     </div>
 
     <template v-if="!loading">

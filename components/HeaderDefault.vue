@@ -14,7 +14,7 @@
             <!-- Menu -->
             <ul class="nav-menu">
               <li class="nav-item">
-                <nuxt-link to="/categories"> Browse Catalog </nuxt-link>
+                <nuxt-link to="/catalog"> Browse Catalog </nuxt-link>
               </li>
             </ul>
           </div>
@@ -49,7 +49,7 @@
     <div class="mobile-nav" :class="{ hidden: !expandMobileMenu }">
       <ul class="nav-menu">
         <li class="nav-item">
-          <nuxt-link to="/categories"> Browse Catalog </nuxt-link>
+          <nuxt-link to="/catalog"> Browse Catalog </nuxt-link>
         </li>
       </ul>
     </div>
