@@ -3,26 +3,38 @@
     <h2 class="page-title">The Catalog</h2>
 
     <hr />
-    <div v-if="!loading" class="row">
-      <div v-for="(product, i) in products" :key="product.id || i" class="item">
-        <div class="wrapper">
-          <product-card :product="product" />
+    <template v-if="!loading">
+      <div class="row">
+        <div
+          v-for="(product, i) in products"
+          :key="product.id || i"
+          class="item"
+        >
+          <div class="wrapper">
+            <product-card :product="product" />
+          </div>
         </div>
       </div>
-    </div>
-    <div v-else>Loading</div>
+    </template>
+
+    <template v-else>
+      <loading-text :is-loading="loading" />
+    </template>
   </div>
 </template>
 
 <script>
 import { mapActions, mapState } from 'vuex'
+
 import ProductCard from '@/components/ProductCard.vue'
+import LoadingText from '@/components/LoadingText.vue'
 
 export default {
   name: 'CategoryPage',
 
   components: {
     ProductCard,
+    LoadingText,
   },
 
   data() {
