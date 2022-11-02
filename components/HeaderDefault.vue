@@ -46,13 +46,15 @@
     </div>
 
     <!-- Mobile -->
-    <div class="mobile-nav" :class="{ hidden: !expandMobileMenu }">
-      <ul class="nav-menu">
-        <li class="nav-item">
-          <nuxt-link to="/catalog"> Browse Catalog </nuxt-link>
-        </li>
-      </ul>
-    </div>
+    <transition name="menu">
+      <div v-show="expandMobileMenu" class="mobile-nav">
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <nuxt-link to="/catalog"> Browse Catalog </nuxt-link>
+          </li>
+        </ul>
+      </div>
+    </transition>
   </nav>
 </template>
 
@@ -69,6 +71,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.menu-enter-active,
+.menu-leave-active {
+  transition: margin 0.2s ease;
+}
+
+.menu-enter,
+.menu-leave-to {
+  margin-top: -1px;
+}
+
 nav {
   .desktop-nav {
     background-color: #fff;
@@ -126,12 +138,9 @@ nav {
 
   .mobile-nav {
     display: block;
-    margin-bottom: 20px;
+    border-top: 1px solid #d4d8dd;
     border-bottom: 1px solid #d4d8dd;
-
-    &.hidden {
-      display: none;
-    }
+    padding-bottom: 5px;
 
     .nav-menu {
       .nav-item {
