@@ -42,14 +42,14 @@
 import { mapState, mapActions } from 'vuex'
 
 import InputTabs from '@/components/InputTabs'
-import LoadingText from '@/components/LoadingText';
+import LoadingText from '@/components/LoadingText'
 
 export default {
   name: 'ProductPage',
 
   components: {
     InputTabs,
-    LoadingText
+    LoadingText,
   },
 
   data() {
@@ -70,7 +70,7 @@ export default {
     } catch (error) {
       this.$nuxt.error({
         statusCode: '500',
-        message: 'Something has gone wrong',
+        message: 'Something has gone wrong. Please try again later',
       })
     }
   },
