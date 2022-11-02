@@ -1,7 +1,7 @@
 # e-vermos-fe-assessment
 
 ## Live
-View at: [url](https://e-vermos-fe-assessment-br89ghvsy-mar-sh.vercel.app/)
+View at: [url](https://evercatalog-mar-sh.vercel.app/)
 
 ## Build Setup
 
