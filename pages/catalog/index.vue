@@ -86,7 +86,7 @@ export default {
 
     .wrapper {
       max-width: 100%;
-      padding: 8px;
+      padding: 12px;
     }
   }
 }
