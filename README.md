@@ -1,4 +1,4 @@
-# e-vermos-fe-assessment
+# evermos-fe-assessment
 
 ## Live
 View at: [url](https://evercatalog-mar-sh.vercel.app/)
